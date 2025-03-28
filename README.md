@@ -12,7 +12,7 @@ A REST API for managing vehicles and drivers using Express.js, TypeScript, and P
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
+git clone https://github.com/xd4n1el/trafegus-challenge.git
 cd trafegus
 ```
 
@@ -30,7 +30,7 @@ docker-compose up --build
 This will start:
 - PostgreSQL database on port 5432
 - Adminer (database management tool) on port 8080
-- Backend API on port 3000
+- Backend API on port 3001
 
 ## API Endpoints
 
