@@ -120,6 +120,14 @@ yarn lint:fix
 yarn format
 ```
 
+## Running production mode 
+
+```bash
+yarn build
+
+yarn preview
+```
+
 ## Development
 
 The application uses:
