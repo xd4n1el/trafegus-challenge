@@ -1,0 +1,44 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": ["eslint:recommended", "plugin:react/recommended", "plugin:prettier/recommended", "next", "next/core-web-vitals", "prettier", "plugin:@typescript-eslint/recommended"],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react",
+        "@typescript-eslint"
+    ],
+    "rules": {
+        "react/react-in-jsx-scope": "off",
+        "react/jsx-indent": "off",
+        "jsx-a11y/label-has-associated-control": "off",
+        "no-unused-expressions": "off",
+        "no-nested-ternary": "off",
+        "prettier/prettier": ["error", { "endOfLine": "auto" }],
+        "no-shadow": "off",
+        "no-param-reassign": "off",
+        "consistent-return": "off",
+        "array-callback-return": "off",
+        "no-useless-catch": "off",
+        "no-case-declarations": "off",
+        "no-async-promise-executor": "off",
+        "react/jsx-curly-newline": "off",
+        "react/jsx-wrap-multilines": "off",
+        "react/jsx-props-no-spreading": "off",
+        "react/no-array-index-key": "off",
+        "react/display-name": "off",
+        "react/jsx-one-expression-per-line": "off",
+        "react/no-unknown-property": [2, { "ignore": ["tw", "css", "jsx", "html"] }],
+        "import/prefer-default-export": "off",
+        "react-hooks/exhaustive-deps": "off",
+        "react/prop-types": "off",
+        "no-use-before-define": "off",
+        "no-else-return": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        "@next/next/no-img-element": "off"
+    }
+  }

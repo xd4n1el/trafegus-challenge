@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  width: 100vw;
+  min-height: 100svh;
+  overflow-x: hidden;
+}
+
+button {
+  cursor: pointer;
+}
+
+input {
+  cursor: text;
+}
+
+.leaflet-container {
+  z-index: 0 !important;
+}

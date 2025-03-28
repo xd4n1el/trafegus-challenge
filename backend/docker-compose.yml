@@ -1,0 +1,61 @@
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: trafegus_postgres
+    environment:
+      POSTGRES_USER: trafegus
+      POSTGRES_PASSWORD: trafegus123
+      POSTGRES_DB: trafegus_db
+      POSTGRES_HOST: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - trafegus_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U trafegus -d trafegus_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  adminer:
+    image: adminer
+    container_name: trafegus_adminer
+    ports:
+      - "8080:8080"
+    networks:
+      - trafegus_network
+    depends_on:
+      - postgres
+    environment:
+      ADMINER_DEFAULT_SERVER: postgres
+      ADMINER_DESIGN: dracula
+    restart: unless-stopped
+
+  backend:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: trafegus_backend
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=development
+      - DATABASE_URL=postgresql://trafegus:trafegus123@postgres:5432/trafegus_db
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - trafegus_network
+    volumes:
+      - .:/app
+      - /app/node_modules
+    restart: unless-stopped
+
+networks:
+  trafegus_network:
+    driver: bridge
+
+volumes:
+  postgres_data: 
